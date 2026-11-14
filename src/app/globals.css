@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/*
+ * Wind of Legend design tokens.
+ * Components use the Tailwind names (bg-deep, text-mist, ...), never raw hex.
+ * See docs/05-ui-architecture.md.
+ */
+@theme {
+  /* Surfaces */
+  --color-abyss: #06121f;
+  --color-deep: #0b1e33;
+  --color-swell: #13304d;
+  --color-reef: #1c4166;
+
+  /* Text */
+  --color-foam: #e8f4f8;
+  --color-mist: #8fa9bf;
+
+  /* Accents */
+  --color-turquoise: #1fc8b5;
+  --color-turquoise-strong: #17a897;
+  --color-cyan: #22d3ee;
+  --color-gold: #f2b84b;
+  --color-coral: #ff6b5e;
+  --color-sand: #e9d8b4;
+
+  /* Typography (variables set by next/font in the root layout) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-space-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Shape */
+  --radius-card: 0.75rem;
+
+  /* Motion */
+  --animate-fill: fill 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 1.6s ease-out 1;
+
+  @keyframes fill {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-abyss font-sans text-foam antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-cyan;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
