@@ -1,0 +1,6 @@
+node_modules
+.next
+package-lock.json
+supabase/.temp
+src/types/database.ts
+docs/03-initial-schema.sql
